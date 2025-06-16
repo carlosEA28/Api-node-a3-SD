@@ -1,4 +1,3 @@
-# docker-compose.yml
 version: "3.8"
 
 services:
@@ -7,7 +6,7 @@ services:
     ports:
       - 27018:27017
     volumes:
-      - my-data:/var/lib/mongodb/data
+      - my-data:/data/db # correção do path (normalmente /data/db)
 
   mongo-express:
     image: "mongo-express:1.0.2"
@@ -16,6 +15,8 @@ services:
     environment:
       ME_CONFIG_BASICAUTH_USERNAME: username
       ME_CONFIG_BASICAUTH_PASSWORD: password
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_PORT: 27017
 
 volumes:
   my-data:
