@@ -1,7 +1,10 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
-import path from "path";
+import router from "./routes/userRoutes.js";
+import connectDb from "./db/mongoDB/index.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
@@ -10,7 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//rotas
+app.use("/api", router);
+connectDb();
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
