@@ -6,8 +6,8 @@ const postSchema = new mongoose.Schema({
   author: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
-  tags: [{ type: mongoose.Schema.Types.ObjectId, ref: "PostTag" }],
-  categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "PostCategory" }],
+  tags: [{ type: mongoose.Schema.Types.ObjectId, ref: "Tag" }],
+  categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],
 });
 
 postSchema.pre("save", function (next) {
