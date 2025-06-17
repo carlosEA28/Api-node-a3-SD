@@ -5,6 +5,7 @@ import router from "./routes/userRoutes.js";
 import connectDb from "./db/mongoDB/index.js";
 import dotenv from "dotenv";
 import CategoryRouter from "./routes/categoryRoutes.js";
+import tagRouter from "./routes/tagRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -16,6 +17,8 @@ app.use(cookieParser());
 
 app.use("/api", router);
 app.use("/api", CategoryRouter);
+app.use("/api", tagRouter);
+
 connectDb();
 
 const PORT = process.env.PORT || 3000;
